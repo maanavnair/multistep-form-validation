@@ -9,6 +9,11 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
+## Deployed App
+
+The application is deployed in vercel.
+Open [https://multistep-form-validation.vercel.app/] to view the application.
+
 ## How the application works
 
 ### Personal Information
@@ -41,4 +46,5 @@ You may also see any lint errors in the console.
 But remember, that if you go to the previous page without saving your information, you will need to fill in the fields again when you come back to that page.\
 -How to save the information? Easy! If you click on the 'Next' Button and your input doesn't have any validation errors, then your information will be saved and 
 you will be taken to the next page. Then you can go back to the previous page as much as you want and your enterted information won't change as long as you don't
-manually change it.
+manually change it.\
+-Follow the error messages if you enter an invalid input.
