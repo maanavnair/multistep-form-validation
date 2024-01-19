@@ -24,7 +24,7 @@ input {
   font-size: 1rem;
 }
 
-select{
+select {
   width: 100%;
   padding: 0.5rem;
   border: 1px solid #ccc;
@@ -38,12 +38,12 @@ select{
   margin-bottom: 1rem;
 }
 
-.btn-grp{
+.btn-grp {
   display: flex;
   justify-content: space-around;
 }
 
-.input-grp{
+.input-grp {
   min-height: 40vh;
 }
 
@@ -81,4 +81,49 @@ button:hover {
 .key {
   font-weight: bold;
   margin-right: 0.3rem;
+}
+
+@media screen and (max-width: 510px) {
+  input {
+    width: 70vw;
+    padding: 0.25rem;
+    font-size: 0.8rem;
+    margin-left: 5vw;
+  }
+
+  select {
+    width: 70vw;
+    padding: 0.25rem;
+    font-size: 0.8rem;
+    margin-left: 5vw;
+  }
+
+  label {
+    margin-left: 5vw;
+  }
+
+  .input-grp {
+    width: 100%;
+    min-height: 30vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn-grp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .error {
+    margin-bottom: 0.5rem;
+    max-width: 70vw;
+    font-size: 0.7rem;
+  }
+
+  .details {
+    margin: auto;
+    margin-bottom: 0.5rem;
+  }
 }

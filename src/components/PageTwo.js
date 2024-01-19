@@ -15,10 +15,12 @@ const PageTwo = () => {
   const [inputValue, setInputValue] = useState(inititalData);
   const [error, setError] = useState(inititalData);
 
+  //useEffect to get the values of the respective fields on going to the previous page
   useEffect(() => {
     setInputValue({...value});
   }, []);
 
+    //handling errors
   const handleError = () => {
     const newErrors = {
       street: checkStreet(inputValue.street),
@@ -27,9 +29,10 @@ const PageTwo = () => {
       zip: checkZip(inputValue.zip),
     }
     setError(newErrors);
-    return Object.values(newErrors).some((error) => error !== "");
+    return Object.values(newErrors).some((error) => error !== "");//checking for errors
   }
 
+  //Handling errors in Street Address
   const checkStreet = (street) => {
     if(street === ""){
       return "Street name is required";
@@ -40,6 +43,7 @@ const PageTwo = () => {
     return "";
   }
 
+  //Handling errors in city name
   const checkCity = (city) => {
     if(city === ""){
       return "City is required";
@@ -50,6 +54,7 @@ const PageTwo = () => {
     return "";
   }
 
+  //Handling errors in State Name
   const checkState = (state) => {
     if(state === ""){
       return "State is required";
@@ -57,13 +62,19 @@ const PageTwo = () => {
     return "";
   }
 
+  //Handling Errors in Zip Code
   const checkZip = (zip) => {
+    const zipRegex = /^\d{6}$/;
     if(zip === ""){
       return "Zip code is required";
+    }
+    if(!zipRegex.test(zip)){
+      return "Enter a valid Zip Code";
     }
     return "";
   }
 
+  //Function to go to the next page
   const handelNext = () => {
     const isError = handleError();
     if(!isError){
@@ -75,15 +86,17 @@ const PageTwo = () => {
     }
   }
 
+  //function to go to the previous page
   const handlePrev = () => {
     previousPage();
   }
 
+  //handling any changes in the input
   const handleChange = (e) => {
     const key = e.target.name;
     const value = e.target.value;
     setInputValue({ ...inputValue, [key]: value });
-    setError({ ...error, [key]: "" });
+    setError({ ...error, [key]: "" }); //removing error message when user starts typing
   };
 
   return (

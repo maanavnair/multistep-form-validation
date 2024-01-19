@@ -12,10 +12,12 @@ const PageThree = () => {
   const [inputValue, setInputValue] = useState(inititalData);
   const [error, setError] = useState(inititalData);
 
+  //useEffect to get the values of the respective fields on going to the previous page
   useEffect(() => {
     setInputValue({...value});
   }, []);
 
+    //handling errors
   const handleError = () => {
     const newErrors = {
       username: checkUsername(inputValue.username),
@@ -23,9 +25,10 @@ const PageThree = () => {
       confirm: checkConfirm(inputValue.password, inputValue.confirm),
     }
     setError(newErrors);
-    return Object.values(newErrors).some((error) => error !== "");
+    return Object.values(newErrors).some((error) => error !== ""); //checking for errors
   }
 
+  //Handling any errors in the Username
   const checkUsername = (username) => {
     if(username === ""){
       return "Username is required";
@@ -36,6 +39,7 @@ const PageThree = () => {
     return "";
   }
 
+  //Handling any errors in the Password
   const checkPassword = (password) => {
     if(password === ""){
       return "Password is required";
@@ -46,6 +50,7 @@ const PageThree = () => {
     return "";
   }
 
+  //Handling any errors in the Confirm Password
   const checkConfirm = (password, confirm) => {
     if(password !== confirm){
       return "Confirm Password must be equal to Password";
@@ -53,6 +58,7 @@ const PageThree = () => {
     return "";
   }
 
+  //function to go to the next page (in this case, submitting the form)
   const handelNext = () => {
     const isError = handleError();
     if(!isError){
@@ -64,15 +70,17 @@ const PageThree = () => {
     }
   }
 
+  //function to go to the previous page
   const handlePrev = () => {
     previousPage();
   };
 
+  //handling any changes in the input
   const handleChange = (e) => {
     const key = e.target.name;
     const value = e.target.value;
     setInputValue({ ...inputValue, [key]: value });
-    setError({ ...error, [key]: "" });
+    setError({ ...error, [key]: "" }); //removing error messages when user starts typing
   };
 
   return (

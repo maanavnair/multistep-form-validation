@@ -23,17 +23,17 @@ const FormComponent = () => {
   const pages = [PageOne, PageTwo, PageThree, DetailsPage];
   const [value, setValue] = useState(inititalData);
   const [view, setView] = useState(0);
-  const nextPage = () => {
+  const nextPage = () => {  //added logic for going to the next page
     if (view !== pages.length - 1) {
       setView(view + 1);
     }
   };
-  const previousPage = () => {
+  const previousPage = () => {  //added logic for going to the previous page
     if (view !== 0) {
       setView(view - 1);
     }
   };
-  const CurrentPage = pages[view];
+  const CurrentPage = pages[view]; //current page
   return (
     <FormContext.Provider
       value={{ value, setValue, nextPage, previousPage }}>

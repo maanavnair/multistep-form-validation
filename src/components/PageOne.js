@@ -12,10 +12,12 @@ const PageOne = () => {
   const [inputValue, setInputValue] = useState(inititalData);
   const [error, setError] = useState(inititalData);
 
+  //useEffect to get the values of the respective fields on going to the previous page
   useEffect(() => {
     setInputValue({...value});
   }, []);
 
+  //handling errors
   const handleError = () => {
     const newErrors = {
       name: checkName(inputValue.name),
@@ -23,10 +25,10 @@ const PageOne = () => {
       dateOfBirth: checkdateOfBirth(inputValue.dateOfBirth),
     }
     setError(newErrors);
-    return Object.values(newErrors).some((error) => error !== "");
+    return Object.values(newErrors).some((error) => error !== ""); //checking for errors
   }
 
-
+  //Handing Error in the Name
   const checkName = (name) => {
     if(name === ""){
       return "Name is required";
@@ -37,6 +39,7 @@ const PageOne = () => {
     return "";
   }
 
+  //Handling error in the Email
   const checkEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if(email === ""){
@@ -48,13 +51,15 @@ const PageOne = () => {
     return "";
   }
 
+  //Handling error in the date of birth
   const checkdateOfBirth = (dateOfBirth) => {
     if(dateOfBirth === ""){
       return "Date of Birth is required";
     }
     return "";
   }
-
+  
+  //function to go to the next page
   const handelNext = () => {
     const isError = handleError();
 
@@ -67,11 +72,12 @@ const PageOne = () => {
     }
   }
 
+  //handling any changes in the input
   const handleChange = (e) => {
     const key = e.target.name;
     const value = e.target.value;
     setInputValue({ ...inputValue, [key]: value });
-    setError({ ...error, [key]: "" });
+    setError({ ...error, [key]: "" }); //removing error message when user starts typing
   };
 
   return (

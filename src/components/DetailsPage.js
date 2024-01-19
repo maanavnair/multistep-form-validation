@@ -4,6 +4,7 @@ import { FormContext } from './FormComponent';
 const DetailsPage = () => {
   const { value } = useContext(FormContext);
 
+  //function to convert camelCase to Proper String
   function toProperString(camelCase) {
     const properString = camelCase.replace(/([A-Z])/g, ' $1').replace(/^./, function(str){
       return str.toUpperCase();
@@ -11,6 +12,8 @@ const DetailsPage = () => {
   
     return properString;
   }
+
+  //displaying all the user details
 
   return (
     <div className="container">
