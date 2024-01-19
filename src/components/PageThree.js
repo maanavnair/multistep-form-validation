@@ -30,7 +30,7 @@ const PageThree = () => {
   };
 
   return (
-    <div>
+    <div className="form">
       <h1>Page 3</h1>
       <input
         placeholder="Username"
@@ -52,9 +52,11 @@ const PageThree = () => {
         onChange={handleChange}
         value={inputValue.confirm}
       />
+      <div>
       <button onClick={handlePrev}>Prev</button>
       <button onClick={handelNext}>Submit</button>
       <button onClick={() => console.log(value)}>Get Value</button>
+      </div>
     </div>
   );
 };
