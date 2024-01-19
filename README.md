@@ -35,3 +35,10 @@ When everything is in order, you will be able to submit the form by clicking 'Su
 ### Submit Button
 The third page of the form contains a submit button.\
 If you click it and your input doesn't have any errors, then the form will be submitted and a page will open which shows you all the details you entered.\
+
+### Note:
+The second page (Address Information) and the third page (Account Setup) contains a previous button which allows us to go to the previous page.
+But remember, that if you go to the previous page without saving your information, you will need to fill in the fields again when you come back to that page.\
+How to save the information? Easy! If you click on the 'Next' Button and your input doesn't have any validation errors, then your information will be saved and 
+you will be taken to the next page. Then you can go back to the previous page as much as you want and your enterted information won't change as long as you don't
+manually change it.
