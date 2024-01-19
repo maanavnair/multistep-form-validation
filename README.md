@@ -12,7 +12,7 @@ You may also see any lint errors in the console.
 ## How the application works
 
 ### Personal Information
--This is the first page you see when you open the application.
+-This is the first page you see when you open the application.\
 -Fill in all the 3 required fields and proceed to the next page by click the 'Next' button.\
 -You will not be able to move to the next page if there are any errors in entering any information.\
 -If you see an error message below an input field, make changes accordingly.\
