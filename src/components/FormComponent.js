@@ -2,11 +2,12 @@ import { useState, createContext } from "react";
 import PageOne from "./PageOne";
 import PageTwo from "./PageTwo";
 import PageThree from "./PageThree";
+import DetailsPage from "./DetailsPage";
 
 const inititalData = {
   name: "",
   email: "",
-  dob: "",
+  dateOfBirth: "",
   street: "",
   zip: "",
   city: "",
@@ -19,11 +20,11 @@ const inititalData = {
 const FormContext = createContext(inititalData);
 
 const FormComponent = () => {
-  const pages = [PageOne, PageTwo, PageThree];
+  const pages = [PageOne, PageTwo, PageThree, DetailsPage];
   const [value, setValue] = useState(inititalData);
   const [view, setView] = useState(0);
   const nextPage = () => {
-    if (view !== 2) {
+    if (view !== pages.length - 1) {
       setView(view + 1);
     }
   };

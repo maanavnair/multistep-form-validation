@@ -1,10 +1,10 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { FormContext } from "./FormComponent";
 
 const inititalData = {
   name: "",
   email: "",
-  dob: "",
+  dateOfBirth: "",
 };
 
 const PageOne = () => {
@@ -12,11 +12,15 @@ const PageOne = () => {
   const [inputValue, setInputValue] = useState(inititalData);
   const [error, setError] = useState(inititalData);
 
+  useEffect(() => {
+    setInputValue({...value});
+  }, []);
+
   const handleError = () => {
     const newErrors = {
       name: checkName(inputValue.name),
       email: checkEmail(inputValue.email),
-      dob: checkDob(inputValue.dob),
+      dateOfBirth: checkdateOfBirth(inputValue.dateOfBirth),
     }
     setError(newErrors);
     return Object.values(newErrors).some((error) => error !== "");
@@ -44,8 +48,8 @@ const PageOne = () => {
     return "";
   }
 
-  const checkDob = (dob) => {
-    if(dob === ""){
+  const checkdateOfBirth = (dateOfBirth) => {
+    if(dateOfBirth === ""){
       return "Date of Birth is required";
     }
     return "";
@@ -61,52 +65,51 @@ const PageOne = () => {
       });
       nextPage();
     }
-  };
-
-  const handlePrev = () => {
-    setValue({
-      ...value,
-      ...inputValue,
-    });
   }
 
   const handleChange = (e) => {
     const key = e.target.name;
     const value = e.target.value;
     setInputValue({ ...inputValue, [key]: value });
-
     setError({ ...error, [key]: "" });
   };
 
   return (
     <div className="form">
-      <h1>Page 1</h1>
-      <input
-        placeholder="Name"
-        name="name"
-        onChange={handleChange}
-        value={inputValue.name}
-      />
-      {error.name && <p style={{ color: "red" }}>{error.name}</p>}
-      <input
-        placeholder="Email"
+      <h1>Personal Information</h1>
+      <div className="input-grp">
+      <div className="input">
+        <label>Name</label>
+        <input
+          name="name"
+          onChange={handleChange}
+          value={inputValue.name}
+        />
+      </div>
+      {error.name && <p className="error">{error.name}</p>}
+      <div className="input">
+        <label>Email</label>
+        <input
         name="email"
         type="email"
         onChange={handleChange}
         value={inputValue.email}
-      />
-      {error.email && <p style={{ color: "red" }}>{error.email}</p>}
-      <input
-        placeholder="Date Of Birth"
-        name="dob"
+        />
+      </div>
+      {error.email && <p className="error">{error.email}</p>}
+      <div className="input">
+        <label>Date of Birth</label>
+        <input
+        name="dateOfBirth"
         type="date"
         onChange={handleChange}
-        value={inputValue.dob}
-      />
-      {error.dob && <p style={{ color: "red" }}>{error.dob}</p>}
-      <div>
-      <button onClick={handlePrev}>Prev</button>
-      <button onClick={handelNext}>Next</button>
+        value={inputValue.dateOfBirth}
+        />
+      </div>
+      {error.dateOfBirth && <p className="error">{error.dateOfBirth}</p>}
+      </div>
+      <div className="btn-grp">
+        <button onClick={handelNext}>Next</button>
       </div>
     </div>
   );
